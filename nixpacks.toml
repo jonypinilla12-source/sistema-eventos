@@ -1,0 +1,5 @@
+[phases.build]
+cmds = ["composer install --optimize-autoloader --no-dev"]
+
+[variables]
+NIXPACKS_PHP_EXTENSIONS = "gd,pdo_mysql,mbstring,xml,bcmath,curl,zip,intl,soap,exif"
