@@ -69,7 +69,7 @@ class Evento extends Model
 
     public function juegoPreguntas()
     {
-        return $this->hasMany(juegoPregunta::class, 'evento_id', 'evento_id');
+        return $this->hasMany(JuegoPregunta::class, 'evento_id', 'evento_id');
     }
 
     // En App\Models\Evento.php (Añade esto dentro de la clase)
