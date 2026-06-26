@@ -50,7 +50,7 @@
                 <input type="time" name="hora" class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 transition">
             </div>
 
-            <div id="div_nacimiento" style="display: none;">
+            <div id="div_nacimiento" class="hidden">
                 <label class="block text-sm font-semibold text-indigo-600 mb-2">Fecha de Nacimiento (Solo Memorial)</label>
                 <input type="date" name="fecha_nacimiento" class="w-full px-4 py-3 rounded-xl border border-indigo-200 bg-indigo-50 outline-none focus:border-indigo-500 transition">
             </div>
@@ -177,12 +177,12 @@
                     </div>
                 </label>
 
-                {{-- Plantilla 8:--}}
+                {{-- Plantilla 8: Romance --}}
                 <label class="relative group cursor-pointer">
                     <input type="radio" name="id_plantilla" value="matrimonio8" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla8.png') }}" alt="DC" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/plantilla8.png') }}" alt="Romance" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Romance</p>
@@ -191,11 +191,12 @@
                     </div>
                 </label>
 
+                {{-- Plantilla 9: Magia --}}
                 <label class="relative group cursor-pointer">
                     <input type="radio" name="id_plantilla" value="matrimonio9" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla9.png') }}" alt="DC" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/plantilla9.png') }}" alt="Magia" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Magia</p>
@@ -204,6 +205,7 @@
                     </div>
                 </label>
 
+                {{-- Plantilla 10: Jardin --}}
                 <label class="relative group cursor-pointer">
                     <input type="radio" name="id_plantilla" value="matrimonio10" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
@@ -268,7 +270,6 @@
                         <img src="{{ asset('img/plantillas/Memorial5.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Luz eterna</p>
                     </div>
-                    </div>
                 </label>
 
                 {{-- Memorial 6 --}}
@@ -278,7 +279,6 @@
                         <img src="{{ asset('img/plantillas/Memorial6.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Minimalista Noir</p>
                     </div>
-                    </div>
                 </label>
 
                 {{-- Memorial 7 --}}
@@ -287,7 +287,6 @@
                     <div class="overflow-hidden rounded-xl border-2 peer-checked:border-indigo-600 transition-all p-1">
                         <img src="{{ asset('img/plantillas/Memorial7.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Baby/Infantil</p>
-                    </div>
                     </div>
                 </label>
 
@@ -333,7 +332,6 @@
                         <img src="{{ asset('img/plantillas/Corporativo4.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Gala Ejecutiva (Lujo Negro y Oro)</p>
                     </div>
-                    </div>
                 </label>
 
                 {{-- Evento 5 --}}
@@ -342,7 +340,6 @@
                     <div class="overflow-hidden rounded-xl border-2 peer-checked:border-indigo-600 transition-all p-1">
                         <img src="{{ asset('img/plantillas/Corporativo5.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Innovación SaaS (Estilo Apple/Mesh)</p>
-                    </div>
                     </div>
                 </label>
 
@@ -353,15 +350,10 @@
                         <img src="{{ asset('img/plantillas/Corporativo6.png') }}" class="aspect-[3/4] object-cover rounded-lg">
                         <p class="text-center text-[10px] mt-1 font-bold">Startup Creativa (Divertido/Team Building)</p>
                     </div>
-                    </div>
                 </label>
                 
             </div>
         </div>
-
-
-
-        
 
         <div class="pt-6 border-t flex justify-end">
             <button type="submit" class="bg-indigo-600 text-white px-10 py-3 rounded-xl font-bold hover:bg-indigo-700 shadow-lg transition-all">
@@ -372,41 +364,39 @@
 </div>
 
 <script>
-    document.getElementById('tipo_evento_id').addEventListener('change', function() {
-        // Obtenemos el texto de la opción seleccionada
-        const texto = this.options[this.selectedIndex].text.toLowerCase();
+    document.addEventListener('DOMContentLoaded', function() {
+        const selector = document.getElementById('tipo_evento_id');
         
-        const campoNacimiento = document.getElementById('div_nacimiento');
-        const seccionMatrimonio = document.getElementById('seccion_plantillas_matrimonio');
-        const seccionMemorial = document.getElementById('seccion_plantillas_memorial');
-        const seccionCorporativo = document.getElementById('seccion_plantillas_corporativas');
+        if(selector) {
+            selector.addEventListener('change', function() {
+                // Obtenemos el texto de la opción seleccionada
+                const texto = this.options[this.selectedIndex].text.toLowerCase();
+                
+                const campoNacimiento = document.getElementById('div_nacimiento');
+                const seccionMatrimonio = document.getElementById('seccion_plantillas_matrimonio');
+                const seccionMemorial = document.getElementById('seccion_plantillas_memorial');
+                const seccionCorporativo = document.getElementById('seccion_plantillas_corporativas');
 
-        // Reset: Ocultar todo primero usando display none
-        campoNacimiento.style.display = 'none';
-        
-        // Usamos style.display para asegurar que se muestren/oculten sin importar Tailwind
-        seccionMatrimonio.style.display = 'none';
-        seccionMemorial.style.display = 'none';
-        seccionCorporativo.style.display = 'none';
+                // Reset: Ocultar todo primero agregando la clase 'hidden' de Tailwind
+                campoNacimiento.classList.add('hidden');
+                seccionMatrimonio.classList.add('hidden');
+                seccionMemorial.classList.add('hidden');
+                seccionCorporativo.classList.add('hidden');
 
-        // Lógica para Memorial
-        if (texto.includes('memorial')) {
-            campoNacimiento.style.display = 'block';
-            seccionMemorial.style.display = 'block';
-            // Quitamos hidden por si acaso está puesto
-            seccionMemorial.classList.remove('hidden');
-        } 
-        
-        // Lógica para Matrimonio
-        else if (texto.includes('matrimonio')) {
-            seccionMatrimonio.style.display = 'block';
-            seccionMatrimonio.classList.remove('hidden');
-        }
-
-        // Lógica para Corporativo (Asegúrate que el texto en el select diga "Corporativo")
-        else if (texto.includes('corporativo') || texto.includes('evento')) {
-            seccionCorporativo.style.display = 'block';
-            seccionCorporativo.classList.remove('hidden');
+                // Lógica para Memorial
+                if (texto.includes('memorial')) {
+                    campoNacimiento.classList.remove('hidden');
+                    seccionMemorial.classList.remove('hidden');
+                } 
+                // Lógica para Matrimonio
+                else if (texto.includes('matrimonio')) {
+                    seccionMatrimonio.classList.remove('hidden');
+                }
+                // Lógica para Corporativo
+                else if (texto.includes('corporativo') || texto.includes('evento')) {
+                    seccionCorporativo.classList.remove('hidden');
+                }
+            });
         }
     });
 </script>
