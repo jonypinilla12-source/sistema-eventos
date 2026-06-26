@@ -84,7 +84,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio" class="peer sr-only" checked>
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-slate-100 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla1.png') }}" alt="Editorial" class="w-full h-full object-cover">
+                            <img src="{{ asset('img/plantillas/Plantilla1.png') }}" alt="Editorial" class="w-full h-full object-cover">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Editorial</p>
@@ -98,7 +98,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio2" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-slate-900 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla2.png') }}" alt="Gala Real" class="w-full h-full object-cover">
+                            <img src="{{ asset('img/plantillas/Plantilla2.png') }}" alt="Gala Real" class="w-full h-full object-cover">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Gala Real</p>
@@ -112,7 +112,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio3" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-orange-50 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla3.png') }}" alt="Boho Chic" class="w-full h-full object-cover">
+                            <img src="{{ asset('img/plantillas/Plantilla3.png') }}" alt="Boho Chic" class="w-full h-full object-cover">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Boho Chic</p>
@@ -126,7 +126,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio4" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-blue-900 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla4.png') }}" alt="Cinema" class="w-full h-full object-cover">
+                            <img src="{{ asset('img/plantillas/Plantilla4.png') }}" alt="Cinema" class="w-full h-full object-cover">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Estreno</p>
@@ -140,7 +140,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio5" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla5.png') }}" alt="Pop Art" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla5.png') }}" alt="Pop Art" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Pop Art</p>
@@ -154,7 +154,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio6" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla6.png') }}" alt="UCM/MARVEL" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla6.png') }}" alt="UCM/MARVEL" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">UCM</p>
@@ -168,7 +168,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio7" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla7.png') }}" alt="DC" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla7.png') }}" alt="DC" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">DC</p>
@@ -182,7 +182,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio8" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla8.png') }}" alt="Romance" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla8.png') }}" alt="Romance" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Romance</p>
@@ -196,7 +196,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio9" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla9.png') }}" alt="Magia" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla9.png') }}" alt="Magia" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Magia</p>
@@ -210,7 +210,7 @@
                     <input type="radio" name="id_plantilla" value="matrimonio10" class="peer sr-only">
                     <div class="overflow-hidden rounded-2xl border-2 border-slate-100 bg-white p-2 transition-all peer-checked:border-indigo-600 peer-checked:ring-2 peer-checked:ring-indigo-100 shadow-sm hover:shadow-md">
                         <div class="aspect-[3/4] rounded-xl bg-yellow-400 mb-3 overflow-hidden">
-                            <img src="{{ asset('img/plantillas/plantilla10.png') }}" alt="Jardin" class="w-full h-full object-cover border-2 border-black">
+                            <img src="{{ asset('img/plantillas/Plantilla10.png') }}" alt="Jardin" class="w-full h-full object-cover border-2 border-black">
                         </div>
                         <div class="px-2 pb-2 text-center">
                             <p class="font-bold text-sm text-slate-800">Jardin</p>
