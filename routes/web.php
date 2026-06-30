@@ -105,21 +105,22 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+
 // =========================================================
 // --- RUTAS PARA ENLAZAR ONEDRIVE ---
 // =========================================================
 Route::get('/onedrive/login', function () {
     $clientId = env('ONEDRIVE_CLIENT_ID');
-    // USAMOS url() DINÁMICO: Detectará automáticamente si estás en Local o en Railway
-    $redirectUri = urlencode(url('/onedrive/callback')); 
     
-    $url = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
+    // Forzamos el uso de APP_URL para garantizar el HTTPS que exige Microsoft
+    $redirectUri = urlencode(env('APP_URL') . '/onedrive/callback'); 
+    
     $url = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize" .
            "?client_id={$clientId}" .
            "&response_type=code" .
            "&redirect_uri={$redirectUri}" .
            "&response_mode=query" .
-           "&scope=https://graph.microsoft.com/Files.ReadWrite.All offline_access";
+           "&scope=https://graph.microsoft.com/Files.ReadWrite.All%20offline_access";
     
     return redirect($url);
 })->name('onedrive.login');
@@ -131,11 +132,12 @@ Route::get('/onedrive/callback', function (\Illuminate\Http\Request $request) {
         return "No se recibió el código de autorización de Microsoft.";
     }
     
-    $response = Http::asForm()->post("https://login.microsoftonline.com/common/oauth2/v2.0/token", [
+    $response = Illuminate\Support\Facades\Http::asForm()->post("https://login.microsoftonline.com/common/oauth2/v2.0/token", [
         'client_id'     => env('ONEDRIVE_CLIENT_ID'),
         'client_secret' => env('ONEDRIVE_CLIENT_SECRET'),
         'code'          => $code,
-        'redirect_uri'  => url('/onedrive/callback'), // Dinámico aquí también
+        // Usamos APP_URL aquí también
+        'redirect_uri'  => env('APP_URL') . '/onedrive/callback', 
         'grant_type'    => 'authorization_code',
     ]);
 
