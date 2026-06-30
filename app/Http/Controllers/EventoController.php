@@ -595,6 +595,9 @@ class EventoController extends Controller
 
     public function pagoExitoso(Request $request)
     {
+        // 👇 1. EVITAMOS QUE EL SERVIDOR CORTE EL PROCESO A LOS 30 SEGUNDOS 👇
+        set_time_limit(120);
+
         $status = $request->get('status');
         $external_reference = $request->get('external_reference'); 
 
@@ -632,14 +635,12 @@ class EventoController extends Controller
             }
 
             // 3. --- LÓGICA CLOUD: CARPETA AUTOMÁTICA EN ONEDRIVE ---
-            // Primero definimos el nombre único del evento para poder nombrar la carpeta
             $nombreNuevoEvento = 'Mi ' . $planComprado . ' #' . strtoupper(Str::random(4));
             $tokenEspecial = bin2hex(random_bytes(4)); 
             $folderIdOneDrive = null;
 
             try {
                 $oneDrive = new \App\Services\OneDriveService();
-                // Crea la carpeta en OneDrive usando el nombre único del evento
                 $folderIdOneDrive = $oneDrive->crearCarpetaRaizEvento($nombreNuevoEvento, $tokenEspecial);
                 
                 if (!$folderIdOneDrive) {
@@ -658,31 +659,32 @@ class EventoController extends Controller
                 'ubicacion_texto' => 'Ubicación por definir',
                 'id_plantilla' => $plantillaDefecto,
                 'activo' => 1,
-                'onedrive_folder_id' => $folderIdOneDrive, // <-- ¡AQUÍ GUARDAMOS LA CARPETA EN LA BD!
+                'onedrive_folder_id' => $folderIdOneDrive, 
             ]);
 
-            if ($passwordAleatoria) {
-                Mail::to($usuario->email)->send(new CredencialesAnfitrionMail($usuario, $passwordAleatoria, $evento));
-            }
+            // 👇 5. ENVÍO DE CORREOS CON TRAMPA DE ERROR 👇
+            try {
+                if ($passwordAleatoria) {
+                    Mail::to($usuario->email)->send(new CredencialesAnfitrionMail($usuario, $passwordAleatoria, $evento));
+                }
 
-            // 👇 NUEVO: 5.1 ENVIAMOS LA ALERTA AL ADMINISTRADOR 👇
-            // Buscamos al usuario que tenga el rol de Admin (rol_id = 1)
-            $admin = \App\Models\User::where('rol_id', 1)->first();
-            if ($admin) {
-                // Le enviamos la notificación de nueva venta
-                \Illuminate\Support\Facades\Mail::to($admin->email)->send(new \App\Mail\NuevoEventoAdminMail($usuario, $evento, $planComprado));
+                $admin = \App\Models\User::where('rol_id', 1)->first();
+                if ($admin) {
+                    \Illuminate\Support\Facades\Mail::to($admin->email)->send(new \App\Mail\NuevoEventoAdminMail($usuario, $evento, $planComprado));
+                }
+            } catch (\Exception $e) {
+                // SI ALGO SALE MAL CON EL CORREO, LA PANTALLA SE DETENDRÁ AQUÍ Y TE DIRÁ EL POR QUÉ EXACTO
+                dd("ERROR EXACTO DE GMAIL: " . $e->getMessage());
             }
-            // 👆 FIN NUEVO 👆
+            // 👆 FIN DE LA TRAMPA 👆
 
             // 6. REDIRIGIMOS SEGÚN EL TIPO DE CLIENTE
             if ($passwordAleatoria) {
-                // Cliente nuevo
                 return view('pago-exito', [
                     'email' => $usuario->email, 
                     'plan' => $planComprado
                 ]);
             } else {
-                // Cliente antiguo haciendo upselling
                 return redirect()->route('eventos.index')->with('exito', '¡Felicidades! Tu nuevo plan de ' . $planComprado . ' ha sido añadido a tu cuenta y tu espacio en la nube está listo.');
             }
         }
