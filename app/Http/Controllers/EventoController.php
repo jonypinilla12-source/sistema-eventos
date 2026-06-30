@@ -569,11 +569,11 @@ class EventoController extends Controller
                     "name" => $request->nombre,
                     "email" => $request->email,
                 ],
-                // 👇 AQUÍ ESTÁ LA MAGIA: Usamos route() para que sea automático en Railway
+                // 👇 Forzamos el uso de APP_URL para garantizar el HTTPS que exige MercadoPago
                 "back_urls" => [
-                    "success" => route('pago.exito'),
-                    "failure" => route('pago.fallo'),
-                    "pending" => route('pago.fallo')
+                    "success" => env('APP_URL') . '/pago/exito',
+                    "failure" => env('APP_URL') . '/pago/fallo',
+                    "pending" => env('APP_URL') . '/pago/fallo'
                 ],
                 "auto_return" => "approved",
                 "external_reference" => json_encode([
