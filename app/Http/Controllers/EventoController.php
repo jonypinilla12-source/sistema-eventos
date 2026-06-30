@@ -557,10 +557,6 @@ class EventoController extends Controller
             MercadoPagoConfig::setAccessToken(env('MERCADOPAGO_ACCESS_TOKEN'));
             $client = new PreferenceClient();
 
-            // ⚠️ OJO AQUÍ: Pega tu URL actual de Ngrok. Si mañana cambia, actualízala aquí.
-            $miNgrok = 'https://getup-coyness-sneer.ngrok-free.dev';
-            $carpeta = '';
-
             $preference = $client->create([
                 "items" => [
                     [
@@ -573,10 +569,11 @@ class EventoController extends Controller
                     "name" => $request->nombre,
                     "email" => $request->email,
                 ],
+                // 👇 AQUÍ ESTÁ LA MAGIA: Usamos route() para que sea automático en Railway
                 "back_urls" => [
-                    "success" => $miNgrok . $carpeta . '/pago/exito',
-                    "failure" => $miNgrok . $carpeta . '/pago/fallo',
-                    "pending" => $miNgrok . $carpeta . '/pago/fallo'
+                    "success" => route('pago.exito'),
+                    "failure" => route('pago.fallo'),
+                    "pending" => route('pago.fallo')
                 ],
                 "auto_return" => "approved",
                 "external_reference" => json_encode([
